@@ -2,7 +2,7 @@ require 'httparty'
 require 'json'
 require 'faker'
 
-class WeatherService
+class CityNameWeatherService
 
   attr_accessor :city_weather_data
 
@@ -24,10 +24,13 @@ class WeatherService
   def get_city
     cities = ['London', 'Birmingham', 'Peterborough', "Cambridge", "Nottingham"]
     city = cities[rand(4)]
+    get_city_weather(city)
   end
 
-  def print_data
-    @city_weather_data
+  def get_coord
+    get_city['coord']
   end
+
+
 
 end
