@@ -2,28 +2,32 @@ require 'httparty'
 require 'json'
 require 'faker'
 
-class CityIdWeatherService
+class CityLongLatWeatherService
 
   attr_accessor :city_weather_data
 
   def initialize
+
     @city_weather_data = nil
   end
 
   include HTTParty
 
-  base_uri 'http://api.openweathermap.org/data/2.5/weather?id='
+  base_uri 'http://api.openweathermap.org/data/2.5/weather?'
 
-  def get_city_weather(id)
+  def get_city_weather(lat,lon)
 
-    @city_weather_data = JSON.parse(self.class.get("#{id}&appid=1f5b7599165af5accbf90c45ba08f97f").body)
+    @city_weather_data = JSON.parse(self.class.get("lat=#{lat}&lon=#{lon}&appid=1f5b7599165af5accbf90c45ba08f97f").body)
 
   end
 
   def get_city
-    cities = ['2638976', '7294483', '7294581', "7292321", "2634341",'97417','3445350', '3449933','5504003','5699404']
-    city = cities[rand(9)]
-    get_city_weather(city)
+    ran_num = rand(4)
+    latitude = ['-54', '18', '13', '6', '-17']
+    longitude = ['-36', '-66', '-61', '-55', '168']
+    lat = latitude[ran_num]
+    lon = longitude[ran_num]
+    get_city_weather(lat,lon)
   end
 
   def get_coord

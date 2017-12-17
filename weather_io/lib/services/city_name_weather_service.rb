@@ -127,7 +127,11 @@ class CityNameWeatherService
     end
 
     def get_sys_type
-      get_sys['type']
+      if get_sys['type'].is_a? Integer
+        return get_sys['type']
+      else
+        return nil
+      end
     end
 
     def get_sys_id

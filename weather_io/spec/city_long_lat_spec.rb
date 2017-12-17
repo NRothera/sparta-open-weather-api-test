@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe CityNameCountryWeatherService do
+describe CityLongLatWeatherService do
   context 'requesting information on city weather works correctly' do
 
     before(:all) do
-      @city_weather = CityWeatherio.new.city_name_country_code
+      @city_weather = CityWeatherio.new.city_lon_lat_service
     end
 
     it "should have coord be hash" do
@@ -12,11 +12,11 @@ describe CityNameCountryWeatherService do
     end
 
     it 'should have lat as float' do
-      expect(@city_weather.get_coord_lat).to be_kind_of(Float)
+      expect(@city_weather.get_coord_lat).not_to be_kind_of(String)
     end
 
     it 'should have lon as float' do
-      expect(@city_weather.get_coord_lon).to be_kind_of(Float)
+      expect(@city_weather.get_coord_lon).not_to be_kind_of(String)
     end
 
     it 'should have lat between -180 and 180' do

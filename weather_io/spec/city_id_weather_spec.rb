@@ -76,10 +76,10 @@ describe CityIdWeatherService do
     end
 
     it 'should have visibility as integer' do
-      if @city_weather.get_visibility.is_a? Integer
-        expect(@city_weather.get_visibility).to be_kind_of(Integer)
-      else
+      if @city_weather.get_visibility == nil
         expect(@city_weather.get_visibility).to be_nil
+      else
+        expect(@city_weather.get_visibility).to be_kind_of(Integer)
       end
     end
 
