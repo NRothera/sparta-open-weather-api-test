@@ -17,7 +17,7 @@ class CityNameCountryWeatherService
 
   def get_city_weather(city, country)
 
-    @city_weather_data = JSON.parse(self.class.get("#{city},#{country}&appid=1f5b7599165af5accbf90c45ba08f97f").body)
+    @city_weather_data = JSON.parse(self.class.get("#{city},#{country}&appid=4ca109896a7afd33ed7a2307f639920c").body)
 
   end
 

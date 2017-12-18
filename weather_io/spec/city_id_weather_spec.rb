@@ -5,14 +5,15 @@ describe CityIdWeatherService do
 
     before(:all) do
       @city_weather = CityWeatherio.new.city_id_weather_service
+      @city_weather.get_city
     end
 
     it "should have coord be hash" do
       expect(@city_weather.get_coord).to be_kind_of(Hash)
     end
 
-    it 'should have lat as float' do
-      expect(@city_weather.get_coord_lat).to be_kind_of(Float)
+    it 'should have lat as Integer or float' do
+      expect(@city_weather.get_coord_lat).to be_kind_of(Float).or be_kind_of(Integer)
     end
 
     it 'should have lon as float' do

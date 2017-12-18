@@ -5,6 +5,7 @@ describe CityNameCountryWeatherService do
 
     before(:all) do
       @city_weather = CityWeatherio.new.city_name_country_code
+      @city_weather.get_city
     end
 
     it "should have coord be hash" do

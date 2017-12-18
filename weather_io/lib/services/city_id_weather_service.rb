@@ -1,8 +1,9 @@
 require 'httparty'
 require 'json'
 require 'faker'
+require_relative '../random/random_data'
 
-class CityIdWeatherService
+class CityIdWeatherService < GetIdData
 
   attr_accessor :city_weather_data
 
@@ -14,20 +15,14 @@ class CityIdWeatherService
 
   base_uri 'http://api.openweathermap.org/data/2.5/weather?id='
 
-  def get_city_weather(id)
-
-    @city_weather_data = JSON.parse(self.class.get("#{id}&appid=1f5b7599165af5accbf90c45ba08f97f").body)
-
-  end
-
   def get_city
-    cities = ['2638976', '7294483', '7294581', "7292321", "2634341",'97417','3445350', '3449933','5504003','5699404']
-    city = cities[rand(9)]
-    get_city_weather(city)
+    city_id = GetIdData.new
+    random_id = city_id.get_random_id
+    @city_weather_data = JSON.parse(self.class.get("#{random_id}&appid=4ca109896a7afd33ed7a2307f639920c").body)
   end
 
   def get_coord
-    get_city['coord']
+    @city_weather_data['coord']
   end
 
   def get_coord_lat
@@ -39,7 +34,7 @@ class CityIdWeatherService
   end
 
   def get_weather
-    get_city['weather'][0]
+    @city_weather_data['weather'][0]
   end
 
   def get_weather_id
@@ -59,11 +54,11 @@ class CityIdWeatherService
   end
 
   def get_base
-    get_city['base']
+    @city_weather_data['base']
   end
 
   def get_main
-    get_city['main']
+    @city_weather_data['main']
   end
 
   def get_main_temp
@@ -87,11 +82,11 @@ class CityIdWeatherService
   end
 
   def get_visibility
-    get_city['visibility']
+    @city_weather_data['visibility']
   end
 
   def get_wind_key
-    get_city['wind']
+    @city_weather_data['wind']
   end
 
   def get_wind_speed
@@ -107,7 +102,7 @@ class CityIdWeatherService
   end
 
   def get_clouds
-    get_city['clouds']
+    @city_weather_data['clouds']
   end
 
   def get_cloud_all
@@ -115,11 +110,11 @@ class CityIdWeatherService
   end
 
   def get_dt
-    get_city['dt']
+    @city_weather_data['dt']
   end
 
   def get_sys
-    get_city['sys']
+    @city_weather_data['sys']
   end
 
   def get_sys_type
@@ -151,14 +146,14 @@ class CityIdWeatherService
   end
 
   def get_city_id
-    get_city['id']
+    @city_weather_data['id']
   end
 
   def get_city_name
-    get_city['name']
+    @city_weather_data['name']
   end
 
   def get_city_cod
-    get_city['cod']
+    @city_weather_data['cod']
   end
 end

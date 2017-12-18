@@ -109,16 +109,11 @@ describe CityNameWeatherService do
 
 
     it 'should have system type as integer or nil' do
-      expect(@city_weather.get_sys_type).to be_kind_of(Integer)
+      expect(@city_weather.get_sys_type).to be_kind_of(Integer).or be_nil
     end
 
     it 'should have system id as integer or nil' do
-      if @city_weather.get_sys_id != nil
-        expect(@city_weather.get_sys_id).to be_kind_of(Integer)
-      else
-        expect(@city_weather.get_sys_id).to be_nil
-
-      end
+      expect(@city_weather.get_sys_id).to be_kind_of(Integer).or be_nil
     end
 
     it 'should have system message as float' do
