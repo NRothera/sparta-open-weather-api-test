@@ -87,11 +87,7 @@ class CityIdWeatherService
   end
 
   def get_visibility
-    if get_city['visibility'].is_a? Integer
-      return get_city['visibility']
-    else
-      return nil
-    end
+    get_city['visibility']
   end
 
   def get_wind_key
@@ -127,19 +123,11 @@ class CityIdWeatherService
   end
 
   def get_sys_type
-    if get_sys['type'].is_a? Integer
-      return get_sys['type']
-    else
-      return nil
-    end
+    get_sys['type']
   end
 
   def get_sys_id
-    if get_sys['id'].is_a? Integer
-      return get_sys_id
-    else
-      return nil
-    end
+   get_sys['id']
   end
 
   def get_sys_message

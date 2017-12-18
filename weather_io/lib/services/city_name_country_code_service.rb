@@ -22,9 +22,9 @@ class CityNameCountryWeatherService
   end
 
   def get_city
-    cities = ['London', "Port-aux-FranÃƒÂ§ais", "Tirana","Dhaka", "Kuala Lumpur"]
-    rand_num = rand(4)
-    country_code = ['UK', "TF", "AL", "BD", "MY"]
+    cities = ['London',"Tirana","Dhaka", "Kuala Lumpur"]
+    rand_num = rand(3)
+    country_code = ['UK', "AL", "BD", "MY"]
     code = country_code[rand_num]
     city = cities[rand_num]
     get_city_weather(city,code)
@@ -128,19 +128,11 @@ class CityNameCountryWeatherService
   end
 
   def get_sys_type
-    if get_sys['type'].is_a? Integer
-      return get_sys['type']
-    else
-      return nil
-    end
+    get_sys['type']
   end
 
   def get_sys_id
-    if get_sys['id'].is_a? Integer
-      return get_sys_id
-    else
-      return nil
-    end
+    get_sys['id']
   end
 
   def get_sys_message

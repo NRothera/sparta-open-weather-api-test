@@ -87,8 +87,8 @@ describe CityNameWeatherService do
       expect(@city_weather.get_wind_speed).to be_between(0,200)
     end
 
-    it 'should have win deg below 360 and above 0' do
-      expect(@city_weather.get_wind_deg).to be_between(0,360)
+    it 'should have win deg below 360 and above 0 or be nil' do
+      expect(@city_weather.get_wind_deg).to be_between(0,360).or be_nil
     end
 
     it 'should have wind gust above 0 and below 200' do

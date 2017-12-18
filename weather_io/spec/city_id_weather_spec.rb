@@ -76,19 +76,15 @@ describe CityIdWeatherService do
     end
 
     it 'should have visibility as integer' do
-      if @city_weather.get_visibility == nil
-        expect(@city_weather.get_visibility).to be_nil
-      else
-        expect(@city_weather.get_visibility).to be_kind_of(Integer)
-      end
+      expect(@city_weather.get_visibility).to be_kind_of(Integer).or be_nil
     end
 
     it 'should have wind_speed above 0 and below 200' do
       expect(@city_weather.get_wind_speed).to be_between(0,200)
     end
 
-    it 'should have win deg below 360 and above 0' do
-      expect(@city_weather.get_wind_deg).to be_between(0,360)
+    it 'should have win deg below 360 and above 0 or nil' do
+      expect(@city_weather.get_wind_deg).to be_between(0,360).or be_nil
     end
 
     it 'should have wind gust above 0 and below 200' do
@@ -108,19 +104,11 @@ describe CityIdWeatherService do
     end
 
     it 'should have system type as integer or nil' do
-      if @city_weather.get_sys_type.is_a? Integer
-        expect(@city_weather.get_sys_type).to be_kind_of(Integer)
-      else
-        expect(@city_weather.get_sys_type).to be_nil
-      end
+      expect(@city_weather.get_sys_type).to be_kind_of(Integer).or be_nil
     end
 
     it 'should have system id as integer or nil' do
-      if @city_weather.get_sys_id == nil
-        expect(@city_weather.get_sys_id).to eql(nil)
-      else
-        expect(@city_weather.get_sys_id).to be_kind_of(Integer)
-      end
+      expect(@city_weather.get_sys_id).to be_kind_of(Integer).or be_nil
     end
 
     it 'should have system message as float' do
